@@ -31,27 +31,26 @@
 
 
 <script>
-
 "use strict"
 
-console.log("Hello, console!")
-		
-// returns a lambda for ease of re-rolling.
+// Returns a lambda for ease of re-rolling.
 const roll_d = (x) =>
-	() => (x * Math.random() + 1)|0
+	() => (x * Math.random() + 1)|0;
 
-function map(arr, f) {
-	let results = []
+// Transforms the given array via the given function.
+const map = (arr, f) => {
+	let results = [];
 	for(let i = 0; i < arr.length; i++) {
-		results.push(f(arr[i]))
+		results.push(f(arr[i]));
 	}
-	return results
+	return results;
 }
 
-function do_times(n, f) {
-	return map(Array(n), f)
+// Applies a function repeatedly. Only useful for impure functions.
+const do_times = (n, f) => {
+	return map(Array(n), f);
 }
 
-console.log(do_times(3, roll_d(6)))
+console.log(do_times(3, roll_d(6)));
 	
 </script></body></html>
