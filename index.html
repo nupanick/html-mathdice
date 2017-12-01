@@ -23,7 +23,7 @@
 	Your numbers are:
 	</p>
 
-	<p>
+	<p id="dicebox">
 	<span class="dice" id="die1">1</span>
 	<span class="dice" id="die2">2</span>
 	<span class="dice" id="die3">3</span>
@@ -32,6 +32,24 @@
 
 <script>
 
-	console.log("Hello, console!")
+"use strict"
 
+console.log("Hello, console!")
+		
+function roll_d(x) {
+	const rand = Math.random
+	// The |0 at the end discards the fractional part.
+	return (x * rand() + 1)|0
+}
+
+function do_times(n, f) {
+	let results = []
+	for(let i = 0; i < n; i++) {
+		results.push(f())
+	}
+	return results
+}
+
+console.log(do_times(3, _ => roll_d(6)))
+	
 </script></body></html>
