@@ -24,9 +24,9 @@
 	</p>
 
 	<p id="dicebox">
-	<span class="dice" id="die1">1</span>
-	<span class="dice" id="die2">2</span>
-	<span class="dice" id="die3">3</span>
+	<span class="dice"></span>
+	<span class="dice"></span>
+	<span class="dice"></span>
 	</p>
 
 
@@ -51,6 +51,16 @@ const do_times = (n, f) => {
 	return map(Array(n), f)
 }
 
-console.log(do_times(3, roll_d(6)))
+// Assigns a die roll to each dice object on the page.
+const doRollDice = () => {
+	const dicebox = document.querySelectorAll('#dicebox > .dice')
+	map(dicebox, (die) => {
+		
+	})
+	//console.log(dicebox)
+}
+
+//console.log(do_times(3, roll_d(6)))
+doRollDice()
 	
 </script></body></html>
