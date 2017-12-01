@@ -36,20 +36,22 @@
 
 console.log("Hello, console!")
 		
-function roll_d(x) {
-	const rand = Math.random
-	// The |0 at the end discards the fractional part.
-	return (x * rand() + 1)|0
-}
+// returns a lambda for ease of re-rolling.
+const roll_d = (x) =>
+	() => (x * Math.random() + 1)|0
 
-function do_times(n, f) {
+function map(arr, f) {
 	let results = []
-	for(let i = 0; i < n; i++) {
-		results.push(f())
+	for(let i = 0; i < arr.length; i++) {
+		results.push(f(arr[i]))
 	}
 	return results
 }
 
-console.log(do_times(3, _ => roll_d(6)))
+function do_times(n, f) {
+	return map(Array(n), f)
+}
+
+console.log(do_times(3, roll_d(6)))
 	
 </script></body></html>
