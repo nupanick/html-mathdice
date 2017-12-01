@@ -1,13 +1,37 @@
-<doctype html>
-<html>
-<head>
-<title>
+<!doctype html>
+<html><head><title>
 	Mathdice Solver 0.0
-</title>
-</head>
-<body>
+</title><style>
+	
+	body {
+		font-family: sans-serif;
+	}
 
-	Hello, world!
+	.dice {
+		display: inline-block;
+		font-size: 120px;
+		width: 120px;
+		height: 120px;
+		line-height: 120px;
+		border: gray outset 6px;
+		text-align: center;
+	}
 
-</body>
-</html>
+</style></head><body>
+
+	<p>
+	Your numbers are:
+	</p>
+
+	<p>
+	<span class="dice" id="die1">1</span>
+	<span class="dice" id="die2">2</span>
+	<span class="dice" id="die3">3</span>
+	</p>
+
+
+<script>
+
+	console.log("Hello, console!")
+
+</script></body></html>
