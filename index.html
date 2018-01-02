@@ -41,30 +41,20 @@
 const roll_d = (x) =>
 	() => (x * Math.random() + 1)|0
 
-// Transforms the given array via the given function.
-const map = (arr, f) => {
-	let results = []
-	for(let i = 0; i < arr.length; i++) {
-		results.push(f(arr[i]))
-	}
-	return results;
-}
-
 // Applies a function repeatedly. Only useful for impure functions.
 const do_times = (n, f) => {
 	return map(Array(n), f)
 }
 
 // Assigns a die roll to each dice object on the page.
-const doRollDice = () => {
+function setDiceOutput (nums) {
 	const dicebox = document.querySelectorAll('#dicebox > .dice')
-	map(dicebox, (die) => {
-		
-	})
-	//console.log(dicebox)
+	Array.prototype.map.call(dicebox, (die, index) => 
+		die.innerHTML = nums[index]
+	)
 }
 
 //console.log(do_times(3, roll_d(6)))
-doRollDice()
+setDiceOutput([0, 0, 0])
 	
 </script></body></html>
