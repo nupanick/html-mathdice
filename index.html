@@ -9,12 +9,16 @@
 
 	.dice {
 		display: inline-block;
-		font-size: 120px;
-		width: 120px;
-		height: 120px;
-		line-height: 120px;
+		float: left;
+		box-sizing: border-box;
 		border: gray outset 6px;
 		text-align: center;
+		margin: 2px;
+		
+		font-size: 80px;
+		width: 100px;
+		height: 100px;
+		/*line-height: 120px;*/
 	}
 
 </style></head><body>
@@ -25,7 +29,7 @@
 
 	<p id="dicebox">
 	<span class="dice"></span>
-	<span class="dice"></span>
+	<span class="dice">0</span>
 	<span class="dice"></span>
 	</p>
 
