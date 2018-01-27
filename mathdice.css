@@ -1,0 +1,14 @@
+body {
+	font-family: sans-serif;
+}
+
+.dice {
+	display: inline-block;
+	box-sizing: border-box;
+	border: gray outset 6px;
+	text-align: center;
+
+	font-size: 80px;
+	width: 100px;
+	height: 100px;
+}
