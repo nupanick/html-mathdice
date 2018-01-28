@@ -49,3 +49,13 @@ function roll_d (n) {
 	const roll = (n * Math.random() |0) + 1;
 	return roll;
 }
+
+/**
+ * Solve a mathdice problem!
+ * @param {number[]} scoringDice An array of "key" values used in the puzzle.
+ * @param {number} target The "target" value to try and produce.
+ * @returns {string} A string representation of the optimal answer.
+ */
+function solve(scoringDice, target) {
+
+}
