@@ -1,4 +1,27 @@
 "use strict";
+const OPERATORS = {
+	add: {
+		apply(a, b) {return a + b},
+		toString() {return "+"}
+	},
+	subtract: {
+		apply(a, b) {return a - b},
+		toString() {return "-"}
+	},
+	multiply: {
+		apply(a, b) {return a * b},
+		toString() {return "*"}
+	},
+	divide: {
+		apply(a, b) {return a / b},
+		toString() {return "/"}
+	},
+	power {
+		apply(a, b) {return a ** b},
+		toString() {return "^"}
+	}
+}
+
 
 // Assign event handlers.
 document.getElementById("roll-button").onclick = generateProblem;
