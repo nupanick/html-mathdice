@@ -1,17 +1,21 @@
 "use strict";
 
 // Assign event handlers.
-document.getElementById("roll-button").onclick = rollDice;
+document.getElementById("roll-button").onclick = generateProblem;
 
 /**
- * Generate new values for all the dice on the page.
+ * Roll dice and generate a mathdice problem. There are three "key" values
+ * (d6), and one "target" roll (1d12 * 1d12).
  */
-function rollDice () {
+function generateProblem () {
 	// mouse:mice :: douse:dice
-	const diceList = document.querySelectorAll('#dicebox > .dice');
+	const diceList = document.querySelectorAll('.scoring');
 	Array.prototype.forEach.call(diceList, douse => {
-		douse.innerHTML = roll_d(n);
+		douse.innerHTML = roll_d(6);
 	})
+
+	const target = document.getElementById('target');
+	target.innerHTML = roll_d(12) * roll_d(12);
 }
 
 /**

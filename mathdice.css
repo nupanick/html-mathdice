@@ -12,3 +12,8 @@ body {
 	width: 100px;
 	height: 100px;
 }
+
+#target {
+	border-color: gold;
+	width: 200px;
+}
