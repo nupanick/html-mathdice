@@ -43,7 +43,7 @@ function generateProblem () {
 
 /**
  * Generate a random number between 1 and n, inclusive.
- * @param n
+ * @param {number} n
  */
 function roll_d (n) {
 	const roll = (n * Math.random() |0) + 1;
