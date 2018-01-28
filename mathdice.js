@@ -16,7 +16,7 @@ const OPERATORS = {
 		apply(a, b) {return a / b},
 		toString() {return "/"}
 	},
-	power {
+	power: {
 		apply(a, b) {return a ** b},
 		toString() {return "^"}
 	}
