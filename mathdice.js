@@ -56,6 +56,5 @@ function roll_d (n) {
  * @returns {string} A string representation of the optimal answer.
  */
 function solve(scoringDice, target) {
-	// Possible solutions: 3! * 5^2 = 6*25 = 150. Reasonable to brute force.
-
+	// Possible solutions: 2 * 3! * 5^2 = 300. Reasonable to brute force.
 }
