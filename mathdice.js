@@ -24,6 +24,7 @@ const OPERATORS = {
 
 // Assign event handlers.
 document.getElementById("roll-button").onclick = generateProblem;
+document.getElementById("solve-button").onclick = showSolution;
 
 /**
  * Roll dice and generate a mathdice problem. There are three "key" values
@@ -38,6 +39,20 @@ function generateProblem () {
 
 	const target = document.getElementById('target');
 	target.value = roll_d(12) * roll_d(12);
+}
+
+/**
+ * Solve the problem! Read in the values on screen and run them through the
+ * solution algorithm.
+ */
+function showSolution () {
+	const diceList = document.querySelectorAll('.scoring');
+	const diceValues = Array.prototype.map.call(diceList, douse =>
+		Number(douse.value)
+	)
+	const targetValue = Number(document.getElementById('target').value);
+	const solution = solve(diceValues, targetValue);
+	document.getElementById('solution').innerHTML = solution;
 }
 
 /**
