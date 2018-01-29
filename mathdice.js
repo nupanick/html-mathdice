@@ -50,6 +50,38 @@ function roll_d (n) {
 }
 
 /**
+ * Evaluate an expression! An expression is either
+ * 1) a number, or
+ * 2) two expressions connected with an operator.
+ * @param {number | Array} expr
+ * @returns {number}
+ */
+ function evaluateExpression (expr) {
+	 if (!Array.isArray(expr)) return expr;
+
+	 const [a, op, b] = expr;
+	 const valueA = evaluateExpression(a);
+	 const valueB = evaluateExpression(b);
+	 return op.apply(valueA, valueB);
+ }
+
+/**
+ * Write an expression as a string.
+ * @param {number | Array} expr
+ * @returns {string}
+ */
+ function writeExpression (expr) {
+	 if (!Array.isArray(expr)) return expr;
+
+	 const [a, op, b] = expr;
+	 let strA = writeExpression(a);
+	 if (Array.isArray(a)) {strA = `(${strA})`}
+	 let strB = writeExpression(b);
+	 if (Array.isArray(b)) {strB = `(${strB})`}
+	 return `${strA} ${op.toString()} ${strB}`;
+ }
+
+/**
  * Solve a mathdice problem!
  * @param {number[]} scoringDice An array of "key" values used in the puzzle.
  * @param {number} target The "target" value to try and produce.
