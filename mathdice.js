@@ -45,7 +45,7 @@ function generateProblem () {
  * @param {number} n
  */
 function roll_d (n) {
-	const roll = (n * Math.random() |0) + 1;
+	const roll = Math.floor(n * Math.random()) + 1;
 	return roll;
 }
 
