@@ -22,7 +22,6 @@ const OPERATORS = {
 	}
 }
 
-
 // Assign event handlers.
 document.getElementById("roll-button").onclick = generateProblem;
 
@@ -34,11 +33,11 @@ function generateProblem () {
 	// mouse:mice :: douse:dice
 	const diceList = document.querySelectorAll('.scoring');
 	Array.prototype.forEach.call(diceList, douse => {
-		douse.innerHTML = roll_d(6);
+		douse.value = roll_d(6);
 	})
 
 	const target = document.getElementById('target');
-	target.innerHTML = roll_d(12) * roll_d(12);
+	target.value = roll_d(12) * roll_d(12);
 }
 
 /**
@@ -57,5 +56,6 @@ function roll_d (n) {
  * @returns {string} A string representation of the optimal answer.
  */
 function solve(scoringDice, target) {
+	// Possible solutions: 3! * 5^2 = 6*25 = 150. Reasonable to brute force.
 
 }
