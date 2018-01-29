@@ -70,16 +70,16 @@ function roll_d (n) {
  * @param {number | Array} expr
  * @returns {string}
  */
- function writeExpression (expr) {
-	 if (!Array.isArray(expr)) return expr;
+function writeExpression (expr) {
+	if (!Array.isArray(expr)) return expr;
 
-	 const [a, op, b] = expr;
-	 let strA = writeExpression(a);
-	 if (Array.isArray(a)) {strA = `(${strA})`}
-	 let strB = writeExpression(b);
-	 if (Array.isArray(b)) {strB = `(${strB})`}
-	 return `${strA} ${op.toString()} ${strB}`;
- }
+	const [a, op, b] = expr;
+	let strA = writeExpression(a);
+	if (Array.isArray(a)) {strA = `(${strA})`}
+	let strB = writeExpression(b);
+	if (Array.isArray(b)) {strB = `(${strB})`}
+	return `${strA} ${op.toString()} ${strB}`;
+}
 
 /**
  * Solve a mathdice problem!
@@ -89,4 +89,40 @@ function roll_d (n) {
  */
 function solve(scoringDice, target) {
 	// Possible solutions: 2 * 3! * 5^2 = 300. Reasonable to brute force.
+	const [a, b, c] = scoringDice;
+	const dicePermutations = [
+		[a, b, c],
+		[a, c, b],
+		[b, a, c],
+		[b, c, a],
+		[c, a, b],
+		[c, b, a]
+	];
+	const templates = [
+		(a, b, c, x, y) => [a, x, [b, y, c]],
+		(a, b, c, x, y) => [[a, x, b], y, c]
+	];
+
+	// I don't even care how brutally hard-coded this is, I don't NEED the
+	// general case right now.
+	const guesses = [];
+	for (const keyX in OPERATORS) {
+		const x = OPERATORS[keyX];
+		for (const keyY in OPERATORS) {
+			const y = OPERATORS[keyY];
+			dicePermutations.forEach( ([a, b, c]) => {
+				templates.forEach( f => {
+					guesses.push(f(a, b, c, x, y));
+				})
+			})
+		}
+	}
+
+	// Find the best guess.
+	const scores = guesses.map( guess =>
+		Math.abs(target - evaluateExpression(guess))
+	)
+	const bestScore = Math.min(...scores);
+	const bestGuess = guesses[scores.indexOf(bestScore)];
+	return `${writeExpression(bestGuess)} = ${evaluateExpression(bestGuess)}`;
 }
